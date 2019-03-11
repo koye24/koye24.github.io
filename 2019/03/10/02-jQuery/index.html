@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="jquery,">
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="jQuery-02 淡入淡出  自定义动画内容     轮播图    事件的注册事件  简单事件的使用  on(事件名称,callback) mouseenter与mouseleaver 操作DOM的API    index()  val()  动态创建元素  html()   $() 操作节点  clone()   apend()  prepend 其它操作  offset()   client">
+<meta name="keywords" content="jquery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jquery02">
+<meta property="og:url" content="http://yoursite.com/2019/03/10/02-jQuery/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="jQuery-02 淡入淡出  自定义动画内容     轮播图    事件的注册事件  简单事件的使用  on(事件名称,callback) mouseenter与mouseleaver 操作DOM的API    index()  val()  动态创建元素  html()   $() 操作节点  clone()   apend()  prepend 其它操作  offset()   client">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-11T16:46:19.546Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="jquery02">
+<meta name="twitter:description" content="jQuery-02 淡入淡出  自定义动画内容     轮播图    事件的注册事件  简单事件的使用  on(事件名称,callback) mouseenter与mouseleaver 操作DOM的API    index()  val()  动态创建元素  html()   $() 操作节点  clone()   apend()  prepend 其它操作  offset()   client">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/10/02-jQuery/">
 
 
 
 
 
-  <title>Hexo</title>
+  <title>jquery02 | Hexo</title>
   
 
 
@@ -140,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -234,158 +238,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/10/jquery-reading/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yeko24">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/10/jquery-reading/" itemprop="url">jquery-reading</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-10T00:00:00+08:00">
-                2019-03-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/jquery/" itemprop="url" rel="index">
-                    <span itemprop="name">jquery</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="jQuery-基础"><a href="#jQuery-基础" class="headerlink" title="jQuery 基础"></a>jQuery 基础</h1><h3 id="1-jQuery基本概念"><a href="#1-jQuery基本概念" class="headerlink" title="1 .jQuery基本概念"></a>1 .jQuery基本概念</h3><p>jQuery就是一个js库，使用jQuery的话，会比使用JavaScript更简单</p>
-<p>学习jQuery，主要学习jQuery的一大堆的api</p>
-<p>API：application programming interface：应用程序编程接口，说白了，API就是方法</p>
-<p>注意：方法调用的时候，都带小括号(),使用jQuery的方法的时候，不要忘了小括号</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/10/jquery-reading/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -415,9 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/10/02-jQuery/" itemprop="url">jquery02</a></h1>
+          <h1 class="post-title" itemprop="name headline">jquery02</h1>
         
 
         <div class="post-meta">
@@ -489,8 +342,7 @@
       
 
       
-        
-          <h1 id="jQuery-02"><a href="#jQuery-02" class="headerlink" title="jQuery-02"></a>jQuery-02</h1><ol>
+        <h1 id="jQuery-02"><a href="#jQuery-02" class="headerlink" title="jQuery-02"></a>jQuery-02</h1><ol>
 <li>淡入淡出  自定义动画内容     轮播图   </li>
 <li>事件的注册事件  简单事件的使用  on(事件名称,callback)</li>
 <li>mouseenter与mouseleaver</li>
@@ -509,246 +361,72 @@
 <ul>
 <li><p>on的方式注册事件</p>
 <p>jQuery当中推荐使用on的方式,这是最现代,最高效的      后面的zepto是移动端的jQuery也支持on的事件注册</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/10/02-jQuery/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </li></ul></div>
-    
-    
-    
+<a id="more"></a>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#btn'</span>).on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="number">123</span>);</span><br><span class="line">     &#125;)</span><br><span class="line">     $(<span class="string">'#btn'</span>).on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="number">456</span>);</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><p>jQuery动画的特点:简约、”粗暴”、干净利落、直截了当，所有的动画都支持时间和回调函数</p>
+<p>show/hide/toggle             操作的属性:  width  height   opacity   display:none</p>
+<p>slideDown/slideUp/slideToggle       操作的属性:  height       display:none</p>
+<p>fadeIn/fadeOut/fadeTo/fadeToggle         操作的属性:  opacity    display:none</p>
+<p>animate({},speed,callback)    参数必须是对象</p>
+<h2 id="mousenter与mouseleave"><a href="#mousenter与mouseleave" class="headerlink" title="mousenter与mouseleave"></a>mousenter与mouseleave</h2><p>用法和mouseover与mouseout是类似的,不同点是处理了冒泡</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">通过调试发现,从大盒子到小盒子的进入只会触发小盒子的mouseenter事件,其它事件不触发</span><br><span class="line">从小盒子进入大盒子时,只会触发小盒子的mouseleave事件,其它事件不触发</span><br></pre></td></tr></table></figure>
+<h2 id="动态创建元素"><a href="#动态创建元素" class="headerlink" title="动态创建元素"></a>动态创建元素</h2><ul>
+<li>$()</li>
+<li>html()</li>
+</ul>
+<h2 id="操作节点"><a href="#操作节点" class="headerlink" title="操作节点"></a>操作节点</h2><ul>
+<li>动态创建节点<ul>
+<li>$()</li>
+<li>html()</li>
+</ul>
+</li>
+<li>追加节点<ul>
+<li>append</li>
+<li>appendTo</li>
+<li>prepend</li>
+<li>after</li>
+<li>before</li>
+</ul>
+</li>
+</ul>
+<h2 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h2><ul>
+<li>empty()</li>
+<li>html(‘’)</li>
+<li>remove()</li>
+</ul>
+<h2 id="克隆元素"><a href="#克隆元素" class="headerlink" title="克隆元素"></a>克隆元素</h2><ul>
+<li>clone(true/false)<ul>
+<li>无论是true还是false都表示深度克隆,即会克隆标签及标签间的一切内容</li>
+<li>参数为true还会克隆事件,false不会克隆事件</li>
+</ul>
+</li>
+</ul>
+<h2 id="获取或设置表单的值"><a href="#获取或设置表单的值" class="headerlink" title="获取或设置表单的值"></a>获取或设置表单的值</h2><ul>
+<li>val()</li>
+</ul>
+<h2 id="设置或获取标签的标准或自定义属性"><a href="#设置或获取标签的标准或自定义属性" class="headerlink" title="设置或获取标签的标准或自定义属性"></a>设置或获取标签的标准或自定义属性</h2><ul>
+<li>attr()</li>
+<li>prop()      disabled     checked  selected</li>
+</ul>
+<h2 id="其它样式设置"><a href="#其它样式设置" class="headerlink" title="其它样式设置"></a>其它样式设置</h2><ul>
+<li>width()   一般用于获取页面可视区的大小</li>
+<li>height() 一般用于获取页面可视区的大小</li>
+<li>offset()    返回值 是一个对象,获取的是当前标签对象到页面的距离,<strong>与父元素有无定位没有关系</strong></li>
+<li>position() 返回值也是一个对象，与父元素的有无定位有关系</li>
+<li>scrollLeft()      获取或是设置页面被卷去的左侧的距离</li>
+<li>scrollTop()      获取或是设置页面被卷去的顶部的距离</li>
+</ul>
+<h2 id="链式编程的原理"><a href="#链式编程的原理" class="headerlink" title="链式编程的原理"></a>链式编程的原理</h2><ul>
+<li>链式编程的原理,就是当前jQuery对象调用完了这个方法后,这个方法还是返回当前jQuery对象</li>
+<li>链式编程多用于设置的操作的地方</li>
+</ul>
+<h2 id="each"><a href="#each" class="headerlink" title="each"></a>each</h2><ul>
+<li>可以用来遍历jQuery对象,数组，普通对象</li>
+<li>一定要使用jQuery对象来调用</li>
+</ul>
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/10/03-jQuery/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yeko24">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/10/03-jQuery/" itemprop="url">jquery03</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-10T00:00:00+08:00">
-                2019-03-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/jquery/" itemprop="url" rel="index">
-                    <span itemprop="name">jquery</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="jQuery03"><a href="#jQuery03" class="headerlink" title="jQuery03"></a>jQuery03</h1><p>1.事件的发展历程     简单事件注册–&gt;bind —&gt;delegate–&gt;on(重点)    live</p>
-<p>2.end的使用    可以把断了的链接回前一层</p>
-<p>3.多库共存   多个类似于jQuery这样的文件用于当前项目中</p>
-<p>4.插件</p>
-<p>5.其它+案例     stop</p>
-<h2 id="jQuery中的常用方法（03-常用方法对比-avi）"><a href="#jQuery中的常用方法（03-常用方法对比-avi）" class="headerlink" title="jQuery中的常用方法（03-常用方法对比.avi）"></a>jQuery中的常用方法（03-常用方法对比.avi）</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">原生javascript</th>
-<th style="text-align:center">jQuery中的方法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">innerText/TextContent</td>
-<td style="text-align:center">text()</td>
-</tr>
-<tr>
-<td style="text-align:center">innerHTML</td>
-<td style="text-align:center">html()</td>
-</tr>
-<tr>
-<td style="text-align:center">style.width/height/top</td>
-<td style="text-align:center">css(属性名,属性值)/css({})</td>
-</tr>
-<tr>
-<td style="text-align:center">box.className=’’</td>
-<td style="text-align:center">addClass()/removeClass()/hasClass()/toggleClass()</td>
-</tr>
-<tr>
-<td style="text-align:center">原生javascript中的标签索引</td>
-<td style="text-align:center">index()</td>
-</tr>
-<tr>
-<td style="text-align:center">表单的值value</td>
-<td style="text-align:center">val()</td>
-</tr>
-<tr>
-<td style="text-align:center">setAttribute/getAttribute</td>
-<td style="text-align:center">attr(属性名,属性值)/prop()</td>
-</tr>
-<tr>
-<td style="text-align:center">nextSibling/nextElementSibling</td>
-<td style="text-align:center">next()</td>
-</tr>
-<tr>
-<td style="text-align:center">previousSibling/previousElementSibling</td>
-<td style="text-align:center">prev()</td>
-</tr>
-<tr>
-<td style="text-align:center">firstChild/firstElementChild</td>
-<td style="text-align:center">first()/:first</td>
-</tr>
-<tr>
-<td style="text-align:center">lastChild/lastElementChild</td>
-<td style="text-align:center">last()/:last</td>
-</tr>
-<tr>
-<td style="text-align:center">scrollLeft/scrollTop</td>
-<td style="text-align:center">scrollLeft()/scrollTop()</td>
-</tr>
-<tr>
-<td style="text-align:center">clientWidth/clientHeight</td>
-<td style="text-align:center">width()/height()</td>
-</tr>
-<tr>
-<td style="text-align:center">offsetLeft/offsetTop</td>
-<td style="text-align:center">position()</td>
-</tr>
-<tr>
-<td style="text-align:center">children</td>
-<td style="text-align:center">children([选择器])</td>
-</tr>
-<tr>
-<td style="text-align:center">cloneNode(true/false)</td>
-<td style="text-align:center">clone(true/false)</td>
-</tr>
-<tr>
-<td style="text-align:center">父元素.appendChild(子元素)</td>
-<td style="text-align:center">append()</td>
-</tr>
-<tr>
-<td style="text-align:center">insertBefore</td>
-<td style="text-align:center">insertBefore()</td>
-</tr>
-</tbody>
-</table>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/10/03-jQuery/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
       
     </div>
     
@@ -763,14 +441,40 @@
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/jquery/" rel="tag"># jquery</a>
+          
+        </div>
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/10/03-jQuery/" rel="next" title="jquery03">
+                <i class="fa fa-chevron-left"></i> jquery03
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/10/jquery-reading/" rel="prev" title="jquery-reading">
+                jquery-reading <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </div>
@@ -780,10 +484,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -791,6 +496,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -811,8 +520,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -874,6 +592,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery-02"><span class="nav-number">1.</span> <span class="nav-text">jQuery-02</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件注册"><span class="nav-number">1.1.</span> <span class="nav-text">事件注册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画"><span class="nav-number">1.2.</span> <span class="nav-text">动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mousenter与mouseleave"><span class="nav-number">1.3.</span> <span class="nav-text">mousenter与mouseleave</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态创建元素"><span class="nav-number">1.4.</span> <span class="nav-text">动态创建元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作节点"><span class="nav-number">1.5.</span> <span class="nav-text">操作节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除节点"><span class="nav-number">1.6.</span> <span class="nav-text">删除节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#克隆元素"><span class="nav-number">1.7.</span> <span class="nav-text">克隆元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取或设置表单的值"><span class="nav-number">1.8.</span> <span class="nav-text">获取或设置表单的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置或获取标签的标准或自定义属性"><span class="nav-number">1.9.</span> <span class="nav-text">设置或获取标签的标准或自定义属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它样式设置"><span class="nav-number">1.10.</span> <span class="nav-text">其它样式设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链式编程的原理"><span class="nav-number">1.11.</span> <span class="nav-text">链式编程的原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#each"><span class="nav-number">1.12.</span> <span class="nav-text">each</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1014,6 +748,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
