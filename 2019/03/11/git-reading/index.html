@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="git,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="git的使用前的配置 建议 用户名和邮箱都改成 github 上的一样   配置用户名 英文 1git config --global  user.name  xxx  配置 邮箱 1git config --global  user.email  xxx  查看 1234# 查看用户名git config   user.name  # 查看邮箱git config   user.email ​">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git-reading">
+<meta property="og:url" content="http://yoursite.com/2019/03/11/git-reading/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="git的使用前的配置 建议 用户名和邮箱都改成 github 上的一样   配置用户名 英文 1git config --global  user.name  xxx  配置 邮箱 1git config --global  user.email  xxx  查看 1234# 查看用户名git config   user.name  # 查看邮箱git config   user.email ​">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/image/1551756683563.png">
+<meta property="og:image" content="http://yoursite.com/image/1551756839359.png">
+<meta property="og:image" content="http://yoursite.com/image/1551757219255.png">
+<meta property="og:image" content="http://yoursite.com/image/1551758121502.png">
+<meta property="og:image" content="http://yoursite.com/image/1551758192461.png">
+<meta property="og:image" content="http://yoursite.com/image/1551773017965.png">
+<meta property="og:updated_time" content="2019-03-13T14:31:09.242Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git-reading">
+<meta name="twitter:description" content="git的使用前的配置 建议 用户名和邮箱都改成 github 上的一样   配置用户名 英文 1git config --global  user.name  xxx  配置 邮箱 1git config --global  user.email  xxx  查看 1234# 查看用户名git config   user.name  # 查看邮箱git config   user.email ​">
+<meta name="twitter:image" content="http://yoursite.com/image/1551756683563.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/11/git-reading/">
+
+
+
+
+
+  <title>git-reading | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/git-reading/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yeko24">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">git-reading</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-11T00:00:00+08:00">
+                2019-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="git的使用前的配置"><a href="#git的使用前的配置" class="headerlink" title="git的使用前的配置"></a>git的使用前的配置</h2><blockquote>
+<p>建议 用户名和邮箱都改成 <code>github</code> 上的一样</p>
+</blockquote>
+<ol>
+<li><p>配置用户名 英文</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global  user.name  xxx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置 邮箱</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global  user.email  xxx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看用户名</span></span><br><span class="line">git config   user.name  </span><br><span class="line"><span class="comment"># 查看邮箱</span></span><br><span class="line">git config   user.email</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ol>
+<h2 id="git的基本使用"><a href="#git的基本使用" class="headerlink" title="git的基本使用"></a>git的基本使用</h2><a id="more"></a>
+<p>1.在要使用git管理的项目的 根目录内 进行 git仓库的初始化 </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>2.验证是否初始化成功</p>
+<p>3.输入 <code>git status</code> 查看状态</p>
+<p>4.添加到暂存区  <code>git add 文件名</code>  添加所有文件 <code>git add .</code></p>
+<p>5.执行 提交到本地仓库 <code>git commit -m 备注信息</code></p>
+<p>6.重新查看 状态 <code>git status</code>  出现以下信息  表示  git成功使用了 放心的下班了</p>
+<h2 id="git忽略清单"><a href="#git忽略清单" class="headerlink" title="git忽略清单"></a>git忽略清单</h2><p>在git项目中，有些文件是不需要进行共享 比如 个人开发者的密码。。 或者是 node_modules 里面一堆小文件。。</p>
+<p>想要在git仓库中 忽略某些文件 不希望这些文件 被git管理</p>
+<ol>
+<li><p>在根目录下 新建一个文件 git 忽略清单 <code>.gitignore</code></p>
+</li>
+<li><p>直接在文件内 加入 要忽略的<strong>文件名</strong>就可以了  支持<strong>正则</strong>语法 忽略 <code>pwd.txt</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 这个是注释代码 </span><br><span class="line">pwd.txt</span><br><span class="line"></span><br><span class="line"># 忽略后缀名是 txt文件 </span><br><span class="line">*.txt</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="github远程仓库的使用演示-方式一"><a href="#github远程仓库的使用演示-方式一" class="headerlink" title="github远程仓库的使用演示 方式一"></a>github远程仓库的使用演示 方式一</h2><p>1.打开网站</p>
+<p>2.注册一个帐号 </p>
+<p>3.新建远程仓库</p>
+<p><img src="/image/1551756683563.png" alt=""></p>
+<p>4.填入远程仓库的信息</p>
+<p><img src="/image/1551756839359.png" alt="1551756839359"></p>
+<p>5.确保本地仓库在推送之前 工作目录是干净的！！！<br><img src="/image/1551757219255.png" alt=""></p>
+<p>6.把远程仓库的地址存入到 一个变量上 <code>origin</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/itcastWsy/dd28.git</span><br></pre></td></tr></table></figure>
+<p>7.开始推送 到 origin仓库上  要注意 填入对应的账号和密码 才行</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>​    出现两个对话框<br>​    1个是填入帐号（github用户名 |  github 邮箱）<br>​    2填写 密码  </p>
+<p>8.推送成功之后 重新刷新 github网页<br><img src="/image/1551758121502.png" alt=""></p>
+<p>9.其他人开始克隆 远程仓库<br><img src="/image/1551758192461.png" alt=""></p>
+<p>10.进行克隆</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> 地址</span><br></pre></td></tr></table></figure>
+<h2 id="克隆和获取更新"><a href="#克隆和获取更新" class="headerlink" title="克隆和获取更新"></a>克隆和获取更新</h2><ol>
+<li><p>克隆 第一次下载 git仓库的时候使用</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> 地址</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取更新  让你的本地仓库 时刻保持和远程仓库的 版本一致 </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="让git仓库-还原到上一次-commit或者pull的状态"><a href="#让git仓库-还原到上一次-commit或者pull的状态" class="headerlink" title="让git仓库 还原到上一次 commit或者pull的状态"></a>让git仓库 还原到上一次 commit或者pull的状态</h2><p>还原</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout  文件名</span><br><span class="line">git checkout .  还原所有文件</span><br></pre></td></tr></table></figure>
+<h2 id="查看本地仓库的日志信息"><a href="#查看本地仓库的日志信息" class="headerlink" title="查看本地仓库的日志信息"></a>查看本地仓库的日志信息</h2><p>1.常规的查看 </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<p>2.精简查看方式</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --oneline</span><br></pre></td></tr></table></figure>
+<p>3.查看仓库的操作信息</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+<h2 id="本地仓库-还原到-任意的版本状态"><a href="#本地仓库-还原到-任意的版本状态" class="headerlink" title="本地仓库 还原到 任意的版本状态"></a>本地仓库 还原到 任意的版本状态</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 版本号(最少6位)</span><br></pre></td></tr></table></figure>
+<h2 id="还原到-上-一个版本"><a href="#还原到-上-一个版本" class="headerlink" title="还原到 上 一个版本"></a>还原到 上 一个版本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
+<h2 id="还原到-上上-一个版本"><a href="#还原到-上上-一个版本" class="headerlink" title="还原到 上上 一个版本"></a>还原到 上上 一个版本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^^</span><br></pre></td></tr></table></figure>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>分支提供了一种更加高效的管理不同项目版本的方式  </p>
+<ol>
+<li><p>在git仓库中 一直就存在分支的概念  默认是在主分支 <code>master</code>下工作</p>
+<p><img src="/image/1551773017965.png" alt="1551773017965"></p>
+</li>
+<li><p>在git仓库中 开启n个分支，正常操作的话，分支之间的编辑 互不影响</p>
+</li>
+<li><p>不同的分支之间的关系 就好像不同的文件夹的关系一样 </p>
+</li>
+</ol>
+<p><strong>过程</strong><br>1.开启新分支</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名称</span><br></pre></td></tr></table></figure>
+<p>2.查看本地仓库的分支</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+<p>3.切换分支</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 分支名称</span><br></pre></td></tr></table></figure>
+<p>5.不同的分支有它自己的仓库，对文件进行编辑之后一样需要提交到本地仓库</p>
+<p>6.合并分支<br>​    1.必须要先切换会主分支 master<br>​    2.再进行合并<br>​    </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge 被合并的分支名</span><br></pre></td></tr></table></figure>
+<h2 id="分支合并冲突"><a href="#分支合并冲突" class="headerlink" title="分支合并冲突"></a>分支合并冲突</h2><ol>
+<li>手动编辑产生冲突的文件</li>
+<li>再执行add  再执行commit</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/11/git-order/" rel="next" title="git-order">
+                <i class="fa fa-chevron-left"></i> git-order
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="yeko24">
+            
+              <p class="site-author-name" itemprop="name">yeko24</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git的使用前的配置"><span class="nav-number">1.</span> <span class="nav-text">git的使用前的配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git的基本使用"><span class="nav-number">2.</span> <span class="nav-text">git的基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git忽略清单"><span class="nav-number">3.</span> <span class="nav-text">git忽略清单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#github远程仓库的使用演示-方式一"><span class="nav-number">4.</span> <span class="nav-text">github远程仓库的使用演示 方式一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#克隆和获取更新"><span class="nav-number">5.</span> <span class="nav-text">克隆和获取更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#让git仓库-还原到上一次-commit或者pull的状态"><span class="nav-number">6.</span> <span class="nav-text">让git仓库 还原到上一次 commit或者pull的状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看本地仓库的日志信息"><span class="nav-number">7.</span> <span class="nav-text">查看本地仓库的日志信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地仓库-还原到-任意的版本状态"><span class="nav-number">8.</span> <span class="nav-text">本地仓库 还原到 任意的版本状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#还原到-上-一个版本"><span class="nav-number">9.</span> <span class="nav-text">还原到 上 一个版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#还原到-上上-一个版本"><span class="nav-number">10.</span> <span class="nav-text">还原到 上上 一个版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支"><span class="nav-number">11.</span> <span class="nav-text">分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支合并冲突"><span class="nav-number">12.</span> <span class="nav-text">分支合并冲突</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yeko24</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
