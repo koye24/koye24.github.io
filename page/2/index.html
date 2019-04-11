@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="h5c3,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,13 @@
 
 
 
-<meta name="description" content="2D转换（变换）transform 常用函数 translate(x,y)        translateX(x)        translateY(y)  使用方式：为元素添加transform属性，如transform:translate(100px,100px)    细节 类似于定位，它并不会影响其它的元素 它是参照元素自身的位置 对行内标签没有效果   应用：实现定位元素的水平垂直居">
-<meta name="keywords" content="h5c3">
-<meta property="og:type" content="article">
-<meta property="og:title" content="h5c3-2D转换">
-<meta property="og:url" content="http://yoursite.com/2019/03/10/h5c3-2d转换/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="2D转换（变换）transform 常用函数 translate(x,y)        translateX(x)        translateY(y)  使用方式：为元素添加transform属性，如transform:translate(100px,100px)    细节 类似于定位，它并不会影响其它的元素 它是参照元素自身的位置 对行内标签没有效果   应用：实现定位元素的水平垂直居">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-20T07:31:13.028Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="h5c3-2D转换">
-<meta name="twitter:description" content="2D转换（变换）transform 常用函数 translate(x,y)        translateX(x)        translateY(y)  使用方式：为元素添加transform属性，如transform:translate(100px,100px)    细节 类似于定位，它并不会影响其它的元素 它是参照元素自身的位置 对行内标签没有效果   应用：实现定位元素的水平垂直居">
+<meta name="twitter:title" content="Hexo">
 
 
 
@@ -120,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/10/h5c3-2d转换/">
+  <link rel="canonical" href="http://yoursite.com/page/2/">
 
 
 
 
 
-  <title>h5c3-2D转换 | Hexo</title>
+  <title>Hexo</title>
   
 
 
@@ -145,7 +140,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -238,9 +234,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -270,7 +266,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">h5c3-2D转换</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/10/h5c3-2d转换/" itemprop="url">h5c3-2D转换</a></h1>
         
 
         <div class="post-meta">
@@ -342,7 +340,8 @@
       
 
       
-        <h2 id="2D转换（变换）transform"><a href="#2D转换（变换）transform" class="headerlink" title="2D转换（变换）transform"></a>2D转换（变换）transform</h2><ul>
+        
+          <h2 id="2D转换（变换）transform"><a href="#2D转换（变换）transform" class="headerlink" title="2D转换（变换）transform"></a>2D转换（变换）transform</h2><ul>
 <li><p>常用函数</p>
 <p>translate(x,y)        translateX(x)        translateY(y)</p>
 </li>
@@ -362,58 +361,14 @@
 </ul>
 </li>
 </ul>
-<a id="more"></a>
-<h2 id="2d变换-rotate"><a href="#2d变换-rotate" class="headerlink" title="2d变换 - rotate"></a>2d变换 - rotate</h2><p><strong>作用：可以让元素在2维坐标系中旋转</strong></p>
-<ul>
-<li>特点：围绕z轴进行旋转</li>
-</ul>
-<ul>
-<li>旋转的方向：正值 》》顺时针方向旋转       负值》》逆时针方向旋转</li>
-</ul>
-<ul>
-<li><p>使用方式</p>
-<p>为元素添加变换属性transform</p>
-<p>设置变换属性的值为rotate,如:transform:rotate(90deg)</p>
-</li>
-</ul>
-<ul>
-<li>变换圆心点：transform-origin：</li>
-</ul>
-<ul>
-<li>关键字：top left right bottom center</li>
-<li>坐标：px</li>
-<li>该属性可以修改元素旋转的时候的中心点<ol>
-<li>transform-origin:<strong>50% 50%;</strong>  默认值  元素的中心位置 百分比是相对于自身的宽度和高度</li>
-<li>transform-origin:<strong>top left;</strong>  左上角   和 transform-origin：0 0;相同</li>
-<li>transform-origin:<strong>50px 50px;</strong>  距离左上角 50px 50px 的位置</li>
-<li>transform-origin：<strong>0</strong>;  只写一个值的时候  第二个值默认为 50%;</li>
-</ol>
-</li>
-</ul>
-<h2 id="2d变换-scale"><a href="#2d变换-scale" class="headerlink" title="2d变换 - scale"></a>2d变换 - scale</h2><p><strong>作用：实现元素在2维坐标系中的绽放</strong></p>
-<ul>
-<li><p>使用方式</p>
-<p>为元素添加变换属性：transform</p>
-<p>为元素的变换属性设置值：scale,如：transform:scale(2,3)</p>
-</li>
-</ul>
-<ul>
-<li>清除添加的变换效果：<ul>
-<li>transform: none</li>
-</ul>
-</li>
-<li>添加图片之后的问题<ul>
-<li>会有默认的基线距离–6px</li>
-<li>问题：如何清除图片的基线距离<ul>
-<li>vertical-align:bottom</li>
-<li>将font-size设置为0，它需要添加给<strong>父容器</strong></li>
-<li>将图片设置为块级元素：display:block</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/10/h5c3-2d转换/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
     
@@ -428,40 +383,14 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/h5c3/" rel="tag"># h5c3</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/03/10/h5c3-渐变/" rel="next" title="h5c3-渐变">
-                <i class="fa fa-chevron-left"></i> h5c3-渐变
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/10/h5c3-3d动画/" rel="prev" title="h5c3-3D动画">
-                h5c3-3D动画 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -471,11 +400,311 @@
   </article>
 
 
+    
+      
 
-    <div class="post-spread">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/10/h5c3-渐变/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yeko24">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/10/h5c3-渐变/" itemprop="url">h5c3-渐变</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-10T00:00:00+08:00">
+                2019-03-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/h5c3/" itemprop="url" rel="index">
+                    <span itemprop="name">h5c3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><p><strong>作用：它可以在元素添加类似 padding 或 border的时候不会影响之前原始的宽高，从而保持网页结构稳定</strong></p>
+<p>添加样式：box-sizing:content-box | border-box</p>
+<h2 id="边框圆角"><a href="#边框圆角" class="headerlink" title="边框圆角"></a>边框圆角</h2><p>语法：border-radius:像素|百分比</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/10/h5c3-渐变/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/10/jQuery-基础/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yeko24">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/10/jQuery-基础/" itemprop="url">jquery-基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-10T00:00:00+08:00">
+                2019-03-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/jquery/" itemprop="url" rel="index">
+                    <span itemprop="name">jquery</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="jQuery基本概念"><a href="#jQuery基本概念" class="headerlink" title="jQuery基本概念"></a>jQuery基本概念</h3><p>jQuery就是一个js库，使用jQuery的话，会比使用JavaScript更简单</p>
+<p>学习jQuery，主要学习jQuery的一大堆的api</p>
+<p>API：application programming interface：应用程序编程接口，说白了，API就是方法</p>
+<p>注意：方法调用的时候，都带小括号(),使用jQuery的方法的时候，不要忘了小括号</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/10/jQuery-基础/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -483,10 +712,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -507,17 +732,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -579,22 +795,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2D转换（变换）transform"><span class="nav-number">1.</span> <span class="nav-text">2D转换（变换）transform</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2d变换-rotate"><span class="nav-number">2.</span> <span class="nav-text">2d变换 - rotate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2d变换-scale"><span class="nav-number">3.</span> <span class="nav-text">2d变换 - scale</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -735,10 +935,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
