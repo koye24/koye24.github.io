@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="jquery,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言 淡入淡出  自定义动画内容     轮播图    事件的注册事件  简单事件的使用  on(事件名称,callback) mouseenter与mouseleaver 操作DOM的API    index()  val()  动态创建元素  html()   $() 操作节点  clone()   apend()  prepend 其它操作  offset()   client()  scr">
+<meta name="keywords" content="jquery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jquery-操作DOM">
+<meta property="og:url" content="http://yoursite.com/2018/03/12/jQuery-操作DOM/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言 淡入淡出  自定义动画内容     轮播图    事件的注册事件  简单事件的使用  on(事件名称,callback) mouseenter与mouseleaver 操作DOM的API    index()  val()  动态创建元素  html()   $() 操作节点  clone()   apend()  prepend 其它操作  offset()   client()  scr">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-16T04:05:18.108Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jquery-操作DOM">
+<meta name="twitter:description" content="前言 淡入淡出  自定义动画内容     轮播图    事件的注册事件  简单事件的使用  on(事件名称,callback) mouseenter与mouseleaver 操作DOM的API    index()  val()  动态创建元素  html()   $() 操作节点  clone()   apend()  prepend 其它操作  offset()   client()  scr">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/12/jQuery-操作DOM/">
+
+
+
+
+
+  <title>jquery-操作DOM | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/12/jQuery-操作DOM/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yeko24">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jquery-操作DOM</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T00:00:00+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/jquery/" itemprop="url" rel="index">
+                    <span itemprop="name">jquery</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ol>
+<li>淡入淡出  自定义动画内容     轮播图   </li>
+<li>事件的注册事件  简单事件的使用  on(事件名称,callback)</li>
+<li>mouseenter与mouseleaver</li>
+<li>操作DOM的API    index()  val()  动态创建元素  html()   $()</li>
+<li>操作节点  clone()   apend()  prepend</li>
+<li>其它操作  offset()   client()  scroll()</li>
+<li>链式编程的原理</li>
+<li>each</li>
+</ol>
+<h2 id="事件注册"><a href="#事件注册" class="headerlink" title="事件注册"></a>事件注册</h2><ul>
+<li><p>简单事件注册</p>
+<p>jQuery中的简单事件注册   将原生的js事件封装成了函数</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// jQuery中的简单事件注册都支持对于同一事件源注册多个相同的事件</span></span><br><span class="line">      $(btn).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">123</span>);</span><br><span class="line">      &#125;)</span><br><span class="line">      $(btn).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">456</span>);</span><br><span class="line">      &#125;)</span><br><span class="line">      $(btn).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">789</span>);</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>on的方式注册事件</p>
+<p>jQuery当中推荐使用on的方式,这是最现代,最高效的      后面的zepto是移动端的jQuery也支持on的事件注册</p>
+<a id="more"></a>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#btn'</span>).on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="number">123</span>);</span><br><span class="line">     &#125;)</span><br><span class="line">     $(<span class="string">'#btn'</span>).on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="number">456</span>);</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><p>jQuery动画的特点:简约、”粗暴”、干净利落、直截了当，所有的动画都支持时间和回调函数</p>
+<p>show/hide/toggle             操作的属性:  width  height   opacity   display:none</p>
+<p>slideDown/slideUp/slideToggle       操作的属性:  height       display:none</p>
+<p>fadeIn/fadeOut/fadeTo/fadeToggle         操作的属性:  opacity    display:none</p>
+<p>animate({},speed,callback)    参数必须是对象</p>
+<h2 id="mousenter与mouseleave"><a href="#mousenter与mouseleave" class="headerlink" title="mousenter与mouseleave"></a>mousenter与mouseleave</h2><p>用法和mouseover与mouseout是类似的,不同点是处理了冒泡</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">通过调试发现,从大盒子到小盒子的进入只会触发小盒子的mouseenter事件,其它事件不触发</span><br><span class="line">从小盒子进入大盒子时,只会触发小盒子的mouseleave事件,其它事件不触发</span><br></pre></td></tr></table></figure>
+<h2 id="动态创建元素"><a href="#动态创建元素" class="headerlink" title="动态创建元素"></a>动态创建元素</h2><ul>
+<li>$()</li>
+<li>html()</li>
+</ul>
+<h2 id="操作节点"><a href="#操作节点" class="headerlink" title="操作节点"></a>操作节点</h2><ul>
+<li>动态创建节点<ul>
+<li>$()</li>
+<li>html()</li>
+</ul>
+</li>
+<li>追加节点<ul>
+<li>append</li>
+<li>appendTo</li>
+<li>prepend</li>
+<li>after</li>
+<li>before</li>
+</ul>
+</li>
+</ul>
+<h2 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h2><ul>
+<li>empty()</li>
+<li>html(‘’)</li>
+<li>remove()</li>
+</ul>
+<h2 id="克隆元素"><a href="#克隆元素" class="headerlink" title="克隆元素"></a>克隆元素</h2><ul>
+<li>clone(true/false)<ul>
+<li>无论是true还是false都表示深度克隆,即会克隆标签及标签间的一切内容</li>
+<li>参数为true还会克隆事件,false不会克隆事件</li>
+</ul>
+</li>
+</ul>
+<h2 id="获取或设置表单的值"><a href="#获取或设置表单的值" class="headerlink" title="获取或设置表单的值"></a>获取或设置表单的值</h2><ul>
+<li>val()</li>
+</ul>
+<h2 id="设置或获取标签的标准或自定义属性"><a href="#设置或获取标签的标准或自定义属性" class="headerlink" title="设置或获取标签的标准或自定义属性"></a>设置或获取标签的标准或自定义属性</h2><ul>
+<li>attr()</li>
+<li>prop()      disabled     checked  selected</li>
+</ul>
+<h2 id="其它样式设置"><a href="#其它样式设置" class="headerlink" title="其它样式设置"></a>其它样式设置</h2><ul>
+<li>width()   一般用于获取页面可视区的大小</li>
+<li>height() 一般用于获取页面可视区的大小</li>
+<li>offset()    返回值 是一个对象,获取的是当前标签对象到页面的距离,<strong>与父元素有无定位没有关系</strong></li>
+<li>position() 返回值也是一个对象，与父元素的有无定位有关系</li>
+<li>scrollLeft()      获取或是设置页面被卷去的左侧的距离</li>
+<li>scrollTop()      获取或是设置页面被卷去的顶部的距离</li>
+</ul>
+<h2 id="链式编程的原理"><a href="#链式编程的原理" class="headerlink" title="链式编程的原理"></a>链式编程的原理</h2><ul>
+<li>链式编程的原理,就是当前jQuery对象调用完了这个方法后,这个方法还是返回当前jQuery对象</li>
+<li>链式编程多用于设置的操作的地方</li>
+</ul>
+<h2 id="each"><a href="#each" class="headerlink" title="each"></a>each</h2><ul>
+<li>可以用来遍历jQuery对象,数组，普通对象</li>
+<li>一定要使用jQuery对象来调用</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jquery/" rel="tag"># jquery</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/11/jQuery-常用方法/" rel="next" title="jquery-常用方法">
+                <i class="fa fa-chevron-left"></i> jquery-常用方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/15/node实现基本服务器/" rel="prev" title="node实现基本服务器">
+                node实现基本服务器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="yeko24">
+            
+              <p class="site-author-name" itemprop="name">yeko24</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件注册"><span class="nav-number">2.</span> <span class="nav-text">事件注册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画"><span class="nav-number">3.</span> <span class="nav-text">动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mousenter与mouseleave"><span class="nav-number">4.</span> <span class="nav-text">mousenter与mouseleave</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态创建元素"><span class="nav-number">5.</span> <span class="nav-text">动态创建元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作节点"><span class="nav-number">6.</span> <span class="nav-text">操作节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除节点"><span class="nav-number">7.</span> <span class="nav-text">删除节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#克隆元素"><span class="nav-number">8.</span> <span class="nav-text">克隆元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取或设置表单的值"><span class="nav-number">9.</span> <span class="nav-text">获取或设置表单的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置或获取标签的标准或自定义属性"><span class="nav-number">10.</span> <span class="nav-text">设置或获取标签的标准或自定义属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它样式设置"><span class="nav-number">11.</span> <span class="nav-text">其它样式设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链式编程的原理"><span class="nav-number">12.</span> <span class="nav-text">链式编程的原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#each"><span class="nav-number">13.</span> <span class="nav-text">each</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yeko24</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

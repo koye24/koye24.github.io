@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="node,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="使用express快速实现一个服务器0）下载安装 1npm i express -s 1) 引入模块 1const express = require(&apos;express&apos;); 2）创建服务器 1const app = express(); 3）监听ip和端口 1app.listen(端口，ip，回调函数); 4）监听请求 1app.use(请求的url,回调函数) 使用exprss监听不同的请求和">
+<meta name="keywords" content="node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node-使用express框架">
+<meta property="og:url" content="http://yoursite.com/2018/03/16/node - 使用express框架/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="使用express快速实现一个服务器0）下载安装 1npm i express -s 1) 引入模块 1const express = require(&apos;express&apos;); 2）创建服务器 1const app = express(); 3）监听ip和端口 1app.listen(端口，ip，回调函数); 4）监听请求 1app.use(请求的url,回调函数) 使用exprss监听不同的请求和">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-16T12:54:12.077Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node-使用express框架">
+<meta name="twitter:description" content="使用express快速实现一个服务器0）下载安装 1npm i express -s 1) 引入模块 1const express = require(&apos;express&apos;); 2）创建服务器 1const app = express(); 3）监听ip和端口 1app.listen(端口，ip，回调函数); 4）监听请求 1app.use(请求的url,回调函数) 使用exprss监听不同的请求和">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/16/node - 使用express框架/">
+
+
+
+
+
+  <title>node-使用express框架 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/node - 使用express框架/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yeko24">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">node-使用express框架</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T00:00:00+08:00">
+                2018-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index">
+                    <span itemprop="name">node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="使用express快速实现一个服务器"><a href="#使用express快速实现一个服务器" class="headerlink" title="使用express快速实现一个服务器"></a>使用express快速实现一个服务器</h2><p>0）下载安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i express -s</span><br></pre></td></tr></table></figure>
+<p>1) 引入模块</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br></pre></td></tr></table></figure>
+<p>2）创建服务器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = express();</span><br></pre></td></tr></table></figure>
+<p>3）监听ip和端口</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.listen(端口，ip，回调函数);</span><br></pre></td></tr></table></figure>
+<p>4）监听请求</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.use(请求的url,回调函数)</span><br></pre></td></tr></table></figure>
+<h2 id="使用exprss监听不同的请求和不同的地址"><a href="#使用exprss监听不同的请求和不同的地址" class="headerlink" title="使用exprss监听不同的请求和不同的地址"></a>使用exprss监听不同的请求和不同的地址</h2><p>1) 推荐使用 app.get 进行监听get请求</p>
+<p>2）推荐使用 app.post 进行监听post请求</p>
+<p>因为它们两个用起来，比我们以前进行监听要简单</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app.get(监听的地址,回调函数)</span><br><span class="line">app.post(监听的地址,回调函数)</span><br></pre></td></tr></table></figure>
+<h2 id="在epxress里面进行静态资源的托管"><a href="#在epxress里面进行静态资源的托管" class="headerlink" title="在epxress里面进行静态资源的托管"></a>在epxress里面进行静态资源的托管</h2><p>在express里面使用的是一个特殊的 <code>中间件</code> 进行静态文件的托管</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.use(请求的url里面包含的文件夹,express.static(要托管的静态文件夹的名字))</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="string">'/views'</span>,express.static(<span class="string">'views'</span>));</span><br><span class="line">app.use(<span class="string">'/css'</span>,express.static(<span class="string">'css'</span>));</span><br><span class="line">app.use(<span class="string">'/images'</span>,express.static(<span class="string">'images'</span>));</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>对应视频： 07-使用特殊的方式处理静态文件.itcast</p>
+</blockquote>
+<h2 id="使用ejs这个模板引擎进行数据的渲染"><a href="#使用ejs这个模板引擎进行数据的渲染" class="headerlink" title="使用ejs这个模板引擎进行数据的渲染"></a>使用ejs这个模板引擎进行数据的渲染</h2><h3 id="ejs的通用用法"><a href="#ejs的通用用法" class="headerlink" title="ejs的通用用法"></a>ejs的通用用法</h3><p>1）下载安装   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i ejs -s</span><br></pre></td></tr></table></figure>
+<p>2)  引入  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ejs = <span class="built_in">require</span>(<span class="string">'ejs'</span>);</span><br></pre></td></tr></table></figure>
+<p>3) 调用对应的方法，实现数据的渲染</p>
+<p>a)  先调用  compile  先把模板生成,会返回一个函数，然后再调用这个函数实现数据的渲染</p>
+<p>let fn = ejs.compile(模板字符串)</p>
+<p>let html = fn(数据);</p>
+<p>b) 直接调用 render 方法   let html =  ejs.render(模板字符串,数据);</p>
+<p>c) 配合模板文件进行渲染  ejs.renderFile(模板文件的路径,数据,渲染成功的回调函数)</p>
+<h3 id="ejs在express里面的专用用法"><a href="#ejs在express里面的专用用法" class="headerlink" title="ejs在express里面的专用用法"></a>ejs在express里面的专用用法</h3><p>1 下载安装</p>
+<p>2 在服务器里面注册中间件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意： 任何一个单词都不能写错</span></span><br><span class="line">app.set(<span class="string">'view engine'</span>,<span class="string">'ejs'</span>);<span class="comment">// 把ejs设置为express的默认的模板引擎</span></span><br><span class="line"><span class="comment">// 设置模板文件的位置 - 同样也是不能写错单词</span></span><br><span class="line">app.set(<span class="string">'views'</span>,模板文件所在的位置);</span><br></pre></td></tr></table></figure>
+<p>3 在请求监听的事件里面，直接调用专有的方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意：名称是不带后缀名的 ，以及所有的ejs的模板文件，都是以  .ejs  结尾的</span></span><br><span class="line">res.render(<span class="string">'模板文件的名称'</span>,数据,回调函数);</span><br></pre></td></tr></table></figure>
+<h2 id="中间件的概念"><a href="#中间件的概念" class="headerlink" title="中间件的概念"></a>中间件的概念</h2><p>什么是中间件：</p>
+<p>理解上： 所谓的中间件，就是某个流程里面的某个环节，只要在上游的某个环节里面插入某些东西，就可以在下游的某个环节，得到这些东西</p>
+<p>express里面的中间件：表现为多个函数，这些函数有三个参数</p>
+<p>一个参数是 请求对象</p>
+<p>一个参数是 响应对象</p>
+<p>还有一个参数是下一个环节的函数</p>
+<p>就可以在中间件里面给某个环节添加内容，还可以调用下一个中间件</p>
+<p>express里面的中间件分成这么几个分类</p>
+<p>应用程序级： app.get  app.post app.use</p>
+<p>路由级： 等会要学习的一个分发请求的模块  router</p>
+<p>错误处理中间件(知道，作为前端，一般是不会使用的，暂时不去了解)</p>
+<p>内置中间件： 比如： express.static()</p>
+<p>第三方中间件： 别人封装好的代码，也是在流程里面加一些东西而已(后期会学习)</p>
+<h2 id="NodeJs里面的模块化语法"><a href="#NodeJs里面的模块化语法" class="headerlink" title="NodeJs里面的模块化语法"></a>NodeJs里面的模块化语法</h2><p>如果把所有的js代码都写在一个js文件里面，必然导致一个问题：这个js文件，会变得非常庞大，执行起来就会效率变低，后期如果想要进行维护，困难很大</p>
+<p>怎么解决：把代码写到多个js文件里面，然后又带来一个问题，先执行谁，后执行谁就不清晰</p>
+<p>更好的解决方案：</p>
+<p><strong>模块化编程</strong> </p>
+<p>什么是模块化： 把代码的功能单一的封装到单独的文件里面 - 说白了分工合作</p>
+<p>在node里面如何实现模块化(把不同的js代码封装到不同的文件里面)</p>
+<p>需要做的事情，新建一个单独的js文件，在js文件里面封装你想要封装的代码，封装好之后，需要对外暴露一个对象，这个对象有专门的语法来进行暴露</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;  &#125;</span><br></pre></td></tr></table></figure>
+<p>模块化解决的问题：</p>
+<p>1）全局变量的污染问题 - 如果你的全局变量多了，难免有冲突 - 模块化之后，每个模块里面的变量是独立，是不会冲突的</p>
+<p>2） 一个文件代码量太多的问题 - 把每个模块的功能进行单一处理 - 后期维护就简单了</p>
+<h2 id="使用express的路由模块进行代码的简化"><a href="#使用express的路由模块进行代码的简化" class="headerlink" title="使用express的路由模块进行代码的简化"></a>使用express的路由模块进行代码的简化</h2><p>实现路由模块的步骤：</p>
+<p>1）先引入expresss</p>
+<p>const express = require(‘express’);</p>
+<p>2）调用exprss的生成路由对象的方法</p>
+<p>const router = express.Router()</p>
+<p>3）使用路由对请求进行监听</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">router.get(<span class="string">'/'</span>,(req,res)=&gt;&#123;</span><br><span class="line"></span><br><span class="line">  res.send(<span class="string">'&lt;h1&gt;这是主页&lt;/h1&gt;'</span>);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>4）把路由对象暴露给外部使用</p>
+<p>module.exports = router;</p>
+<p>在服务器入口模块注册中间件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 先引入 路由 模块</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="built_in">require</span>(<span class="string">'./路由模块'</span>)</span><br><span class="line"><span class="comment">// 注册路由模块</span></span><br><span class="line">app.use(router);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/node/" rel="tag"># node</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/15/node实现基本服务器/" rel="next" title="node实现基本服务器">
+                <i class="fa fa-chevron-left"></i> node实现基本服务器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/17/node-基本的MVC分层/" rel="prev" title="node-基本的MVC分层">
+                node-基本的MVC分层 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="yeko24">
+            
+              <p class="site-author-name" itemprop="name">yeko24</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用express快速实现一个服务器"><span class="nav-number">1.</span> <span class="nav-text">使用express快速实现一个服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用exprss监听不同的请求和不同的地址"><span class="nav-number">2.</span> <span class="nav-text">使用exprss监听不同的请求和不同的地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在epxress里面进行静态资源的托管"><span class="nav-number">3.</span> <span class="nav-text">在epxress里面进行静态资源的托管</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用ejs这个模板引擎进行数据的渲染"><span class="nav-number">4.</span> <span class="nav-text">使用ejs这个模板引擎进行数据的渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ejs的通用用法"><span class="nav-number">4.1.</span> <span class="nav-text">ejs的通用用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ejs在express里面的专用用法"><span class="nav-number">4.2.</span> <span class="nav-text">ejs在express里面的专用用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中间件的概念"><span class="nav-number">5.</span> <span class="nav-text">中间件的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NodeJs里面的模块化语法"><span class="nav-number">6.</span> <span class="nav-text">NodeJs里面的模块化语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用express的路由模块进行代码的简化"><span class="nav-number">7.</span> <span class="nav-text">使用express的路由模块进行代码的简化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yeko24</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

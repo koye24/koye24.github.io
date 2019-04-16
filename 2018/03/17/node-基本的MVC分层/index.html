@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="node,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="开始分离MVC什么是MVC，是一种后台进行模块化分工的思想 约定： 在浏览器访问服务器，服务器返回数据的整个流程中 a) 服务器入口 - 负责接收请求和注册中间件 b) 路由模块 - 负责监听和分发请求 c) 控制器模块 - 负责处理对应的业务 - 得到浏览器带回的数据，返回数据给浏览器 d) 数据模块模块 - 负责操作数据 抽离控制器模块约定好，路由模块只负责分发请求，所以需要把处理数据和返回数">
+<meta name="keywords" content="node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node-基本的MVC分层">
+<meta property="og:url" content="http://yoursite.com/2018/03/17/node-基本的MVC分层/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="开始分离MVC什么是MVC，是一种后台进行模块化分工的思想 约定： 在浏览器访问服务器，服务器返回数据的整个流程中 a) 服务器入口 - 负责接收请求和注册中间件 b) 路由模块 - 负责监听和分发请求 c) 控制器模块 - 负责处理对应的业务 - 得到浏览器带回的数据，返回数据给浏览器 d) 数据模块模块 - 负责操作数据 抽离控制器模块约定好，路由模块只负责分发请求，所以需要把处理数据和返回数">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-16T13:08:07.536Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node-基本的MVC分层">
+<meta name="twitter:description" content="开始分离MVC什么是MVC，是一种后台进行模块化分工的思想 约定： 在浏览器访问服务器，服务器返回数据的整个流程中 a) 服务器入口 - 负责接收请求和注册中间件 b) 路由模块 - 负责监听和分发请求 c) 控制器模块 - 负责处理对应的业务 - 得到浏览器带回的数据，返回数据给浏览器 d) 数据模块模块 - 负责操作数据 抽离控制器模块约定好，路由模块只负责分发请求，所以需要把处理数据和返回数">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/17/node-基本的MVC分层/">
+
+
+
+
+
+  <title>node-基本的MVC分层 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/17/node-基本的MVC分层/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yeko24">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">node-基本的MVC分层</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-17T00:00:00+08:00">
+                2018-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index">
+                    <span itemprop="name">node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="开始分离MVC"><a href="#开始分离MVC" class="headerlink" title="开始分离MVC"></a>开始分离MVC</h2><p>什么是MVC，是一种后台进行模块化分工的思想</p>
+<p>约定：</p>
+<p>在浏览器访问服务器，服务器返回数据的整个流程中</p>
+<p>a) 服务器入口 - 负责接收请求和注册中间件</p>
+<p>b) 路由模块 - 负责监听和分发请求</p>
+<p>c) 控制器模块 - 负责处理对应的业务 - 得到浏览器带回的数据，返回数据给浏览器</p>
+<p>d) 数据模块模块 - 负责操作数据</p>
+<h3 id="抽离控制器模块"><a href="#抽离控制器模块" class="headerlink" title="抽离控制器模块"></a>抽离控制器模块</h3><p>约定好，路由模块只负责分发请求，所以需要把处理数据和返回数据的代码抽离到另一个模块里面，这个模块我们称为： 控制器模块 专门负责处理业务的模块</p>
+<p>a) 新建一个controller.js文件</p>
+<p>b) 在里面暴露一个对象，这个对象有一个展示主页的方法(把之前的在router里面读取数据和返回数据的代码，剪切到了showIndex这个方法里面)</p>
+<p>c)因为，在处理数据和返回数据里面需要用到res和req对象，又再次约定所有的controller里面的方法，都需要两个参数，一个是请求对象，一个响应对象</p>
+<p>d)需要把控制器模块引入路由模块，然后调用控制暴露在外的方法就可以实现页面的展示了</p>
+<h3 id="抽离数据模型模块"><a href="#抽离数据模型模块" class="headerlink" title="抽离数据模型模块"></a>抽离数据模型模块</h3><p>约定好了的，控制器模块里面只负责处理业务，而不负责把数据进行操作，就把获取数据的操作封装到另一个模块文件里面</p>
+<p>a) 新建一个model.js文件</p>
+<p>b) 把读取文件的代码，抽离到model.js里面</p>
+<p>c) 如果使用 fs.readFile 的方式把数组返回比较麻烦，使用fs.readFileSync来代替它，读取json文件</p>
+<p>d) 把字符串转换成数组，返回即可</p>
+<p>e) 在controller.js里面引入model.js，调用里面提供的  getAllHeros 方法得到一个数组，之后，再进行渲染即可</p>
+<h2 id="实现查看功能"><a href="#实现查看功能" class="headerlink" title="实现查看功能"></a>实现查看功能</h2><p>1） 需要先修改一下a标签的跳转的路径，index.ejs里面修改</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/info?id=&lt;%=arr[i].id%&gt;"</span>&gt;</span>查看<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2) 在router.js里面对请求进行监听</p>
+<p>因为express里面已经帮我们把?前后的数据处理好了，只需要直接使用app.get方式进行监听你的？前面的url即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">router.get(&apos;/info&apos;,(req,res)=&gt;&#123;&#125;);</span><br></pre></td></tr></table></figure>
+<p>3) 在controller.js里面实现根据id得到数据，并渲染的过程</p>
+<p>因为获取数据和渲染数据是业务，交给controller部分进行，所以controller只需要向外暴露一个可以直接调用的方法就可以让router进行调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    showInfoById:<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 1 直接通过express封装好的一个query属性得到id</span></span><br><span class="line">    <span class="keyword">let</span> id = req.query.id;</span><br><span class="line">    <span class="comment">// 2 把所有的数据读取出来，遍历，找到对应的一个</span></span><br><span class="line">    <span class="keyword">let</span> hero = model.getHeroById(id);   </span><br><span class="line">    <span class="comment">// 把对应的数据，渲染到页面里面</span></span><br><span class="line">    res.render(<span class="string">'info'</span>,hero,(err,str)=&gt;&#123;</span><br><span class="line">      <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;</span><br><span class="line">      res.send(str);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4) 又因为获取数据应该是model.js的功能，把根据id获取英雄数据的过程，也封装到之前的model模块里面</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    getHeroById:<span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> heros = <span class="keyword">this</span>.getAllHeros();</span><br><span class="line">    <span class="keyword">let</span> hero = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i =<span class="number">0</span>; i &lt; heros.length; i++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(heros[i].id == id)&#123;</span><br><span class="line">        hero = heros[i];</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> hero;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="在express里面获取get请求携带的参数"><a href="#在express里面获取get请求携带的参数" class="headerlink" title="在express里面获取get请求携带的参数"></a>在express里面获取get请求携带的参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.query这个属性，就是exprss帮我们解析好的一个从浏览器那边以get方式提交回来的数据，并且这个东西已经是一个对象</span><br></pre></td></tr></table></figure>
+<h2 id="实现新增功能"><a href="#实现新增功能" class="headerlink" title="实现新增功能"></a>实现新增功能</h2><p>1）把添加按钮的href属性，指向一个新增的请求 ‘/add’</p>
+<p>2)  在router.js里面对这个请求进行监听，然后返回一个新增的页面</p>
+<p>3）在controller里面直接使用ejs返回一个新增的页面即可</p>
+<p>4） 记得先把add.html修改成add.ejs，然后把add.ejs里面的css的路径修改正确</p>
+<blockquote>
+<p>对应视频： 16-显示新增的页面.itcast</p>
+</blockquote>
+<p>5）在router.js里面监听一个post请求了 </p>
+<p>router.post(‘/add’,(req,res)=&gt;{});</p>
+<p>6）找到controller.js在里面封装多一个 addNewHero 方法</p>
+<p>a) 先求出最大 的旧的id，然后让id+1，设置给新的数据</p>
+<p>b) 把新旧数据合并</p>
+<p>c) 找到一个能够写入数据的方法，把数据写入</p>
+<p>7) 在model.js里面封装一个写入文件的方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">writeFile(heros,callback)&#123;</span><br><span class="line">    <span class="comment">// 在这里先把数组数据转换成json格式的字符串</span></span><br><span class="line">    <span class="keyword">let</span> string = <span class="built_in">JSON</span>.stringify(heros);</span><br><span class="line">    fs.writeFile(__dirname + <span class="string">"/heros.json"</span>,string,(err)=&gt;&#123;</span><br><span class="line">        callback(err);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="在express里面实现post请求的数据的解析"><a href="#在express里面实现post请求的数据的解析" class="headerlink" title="在express里面实现post请求的数据的解析"></a>在express里面实现post请求的数据的解析</h2><p>以前原生nodejs服务器，需要注册两个事件进行数据的接收，然后使用querystring模块进行数据的处理 – 比较麻烦</p>
+<p>express里面稍微简单一点，不需要注册事件接收，而是需要使用一个 第三方中间件 直接解析</p>
+<p>body-parser 这个中间件就是专门负责解析post请求的数据的</p>
+<p>需要先先下载安装</p>
+<p>npm i body-parser -s</p>
+<p>然后在app.js里面进行注册中间件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在app.js 里面引入这个中间件</span></span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>)</span><br><span class="line"><span class="comment">// 注册body-parser的中间件，一定要在注册路由中间件之前</span></span><br><span class="line">app.use(bodyParser.urlencoded(&#123;<span class="attr">extended</span>:<span class="literal">false</span>&#125;));</span><br><span class="line"><span class="comment">// bodyParser.urlencoded - 不解析url编码  ，只解析请求体里面的数据</span></span><br><span class="line"><span class="comment">// extended:false 以前低版本的  body-parser 是需要依赖于另外一个第三方中间件来实现数据的解析，后来，nodejs里面已经把这个拥有解析数据的模块已经集成到nodejs里面，就不需要借助第三方中间件了，就是说  extended:false 是不使用外部的第三方中间件解析了</span></span><br><span class="line"><span class="comment">// 注册了body-parser之后，解析出来的数据就直接在  req.body 身上</span></span><br></pre></td></tr></table></figure>
+<p>之后再任何的post请求里面，都可以直接通过 req.body 得到请求传递回来的数据</p>
+<h2 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h2><p>我们在学习读取数据的时候，学习过两个读取数据的方法</p>
+<ul>
+<li>fs.readFile        –  异步读取</li>
+<li>fs.readFileSync     –   同步读取</li>
+</ul>
+<p>什么是同步：</p>
+<p>一个人，做很多件事，就只能一件一件的完成</p>
+<p>什么是异步：</p>
+<p>多个人，如果有人找a办事，a不去做，找到另一个人去办，办完了，告诉a就可以了</p>
+<p>同步和异步的优缺点：</p>
+<p>同步的优点：保证每一步都是严格执行的，严谨，安全</p>
+<p>异步的优点：处理效率高 - nodejs追求的就是效率</p>
+<p>当初为什么要有nodejs，已经在市面上有那么多的后台语言了 - 因为node的目标就是要追求极致的处理效率</p>
+<p>java追求的是数据量，大数据的处理</p>
+<p>node擅长高并发处理，同等情况下，node的处理高并发的效率比java大约高8倍左右</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/node/" rel="tag"># node</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/16/node - 使用express框架/" rel="next" title="node-使用express框架">
+                <i class="fa fa-chevron-left"></i> node-使用express框架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/18/node-sql语句/" rel="prev" title="node-sql语句">
+                node-sql语句 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="yeko24">
+            
+              <p class="site-author-name" itemprop="name">yeko24</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始分离MVC"><span class="nav-number">1.</span> <span class="nav-text">开始分离MVC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#抽离控制器模块"><span class="nav-number">1.1.</span> <span class="nav-text">抽离控制器模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽离数据模型模块"><span class="nav-number">1.2.</span> <span class="nav-text">抽离数据模型模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现查看功能"><span class="nav-number">2.</span> <span class="nav-text">实现查看功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在express里面获取get请求携带的参数"><span class="nav-number">3.</span> <span class="nav-text">在express里面获取get请求携带的参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现新增功能"><span class="nav-number">4.</span> <span class="nav-text">实现新增功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在express里面实现post请求的数据的解析"><span class="nav-number">5.</span> <span class="nav-text">在express里面实现post请求的数据的解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步和异步"><span class="nav-number">6.</span> <span class="nav-text">同步和异步</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yeko24</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
